@@ -1,0 +1,26 @@
+﻿@model Entity_Framework_with_Ajax.Models.Employe
+<form asp-action="Edit" method="post">
+    <h1 class="text-success m-2 text-center">Add Employee</h1>
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" value="@Model?.Name" id="name" name="name">
+        
+    </div>
+
+    <div class="mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input type="number" class="form-control" value="@Model?.Age" id="age" name="age">
+    </div>
+
+    <div class="mb-3">
+        <label for="department" class="form-label">Department</label>
+        <input type="text" class="form-control" value="@Model?.Depaertment" id="department" name="depaertment">
+    </div>
+
+    <div class="mb-3">
+        <label for="sallary" class="form-label">Sallary</label>
+        <input type="number" class="form-control" value="@Model?.Sallary" id="sallary" name="sallary">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
