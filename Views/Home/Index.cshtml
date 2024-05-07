@@ -34,53 +34,118 @@
 </div>
 <div class="px-5 py-2">
     <button class="btn btn-success" id="employeAdd">Add Employe</button>
-    <table class="table table-striped" id="table">
-        <thead>
-            <tr>
-                <th scope="col">#Id</th>
-                <th scope="col">Name</th>
-                <th scope="col">Age</th>
-                <th scope="col">Department</th>
-                <th scope="col">Sallary</th>
-                <th scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody id="tableBody">
-        </tbody>
+   <div style="overflow-x:auto;overflow-y:auto">
+        <table class="table table-striped col-12" id="table">
+            <thead>
+                <tr>
+                    <th scope="col">#Id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Sallary</th>
+                    <th scope="col">action</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
 
-    </table>
+        </table>
+   </div>
 
 
     <script>
+       
         $(document).ready(function () {
+
+           
             //view emp Data
             window.ViewEmp = function () {
+
                 $.ajax({
                     type: "GET",
                     url: "Home/Indexx",
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    success: function (msg) {
-                        $("#tableBody").empty();
-                        var id, name, age, dept, sal;
-                        for (let i = 0; i < msg.length; i++) {
-                            id = msg[i]["id"];
-                            name = msg[i]["name"];
-                            age = msg[i]["age"];
-                            dept = msg[i]["depaertment"];
-                            sal = msg[i]["sallary"];
+                    success: onSuccess,
+                    // function(msg) {
+                    //     $("#tableBody").empty();
+                    //     var id, name, age, dept, sal;
+                    //     for (let i = 0; i < msg.length; i++) {
+                    //         id = msg[i]["id"];
+                    //         name = msg[i]["name"];
+                    //         age = msg[i]["age"];
+                    //         dept = msg[i]["depaertment"];
+                    //         sal = msg[i]["sallary"];
 
-                            $("#tableBody").append(`<tr><td>${id}</td><td>${name}</td><td>${age}</td><td>${dept}</td><td>${sal}</td><td><button onclick='DeleteBtn(${id})' class="btn btn-danger deleteBtn">Delete</button> <button onclick='EditBtn(${id})' class="btn btn-success editBtn">Edit</button> </td></tr>`);
+                    //         $("#tableBody").append(`<tr><td>${id}</td><td>${name}</td><td>${age}</td><td>${dept}</td><td>${sal}</td><td><button onclick='DeleteBtn(${id})' class="btn btn-danger deleteBtn">Delete</button> <button onclick='EditBtn(${id})' class="btn btn-success editBtn">Edit</button> </td></tr>`);
 
-                        }
-                        console.log("Success:", msg[1]["id"]);
+                    //     }
+                    //     console.log("Success:", msg[1]["id"]);
 
-                    },
+                    // },
                     error: function (xhr, textStatus, errorThrown) {
                         console.error("Error:", textStatus, errorThrown);
                     }
                 });
+            
             };
+            function onSuccess(res) {
+              
+                if ($.fn.DataTable.isDataTable('#table')) {
+                    $('#table').DataTable().destroy();
+                }
+                $('#table').DataTable({
+                    responsive: true,
+                    bProcessing: true,
+                    bLengthChange: true,
+                    lengthMenu: [[5, 10, 25, -1], [5, 10, 25, "All"]],
+                    bFilter: true, // Corrected typo from bfilter to bFilter
+                    bSort: true,
+                    bPaginate: true,
+                    data: res,
+                    columns: [
+                        {
+                            data: "id",className:"text-center"
+                            // render: function (data, type, row, meta) {
+                            //     return row.id;
+                            // }
+                        },
+                        {
+                            data: "name", className: "text-center"
+                            // render: function (data, type, row, meta) {
+                            //     return row.name;
+                            // }
+                        },
+                        {
+                            data: "age", className: "text-center"
+                            // render: function (data, type, row, meta) {
+                            //     return row.age;
+                            // }
+                        },
+                        {
+                            data: "depaertment", className: "text-center"
+                            // render: function (data, type, row, meta) {
+                            //     return row.depaertment;
+                            // }
+                        },
+                        {
+                            data: "sallary", className: "text-center"
+                            // render: function (data, type, row, meta) {
+                            //     return row.sallary;
+                            // }
+                        },
+                        {
+                            data: null, className: "text-center",
+                            render: function (data, type, row) {
+                                return '<button class="btn btn-success" onclick="EditBtn(' +data.id + ')">Edit</button>' +
+                                    ' <button class="btn btn-danger" onclick="DeleteBtn(' + data.id + ')">Delete</button>';
+                            }
+                        }
+                    ],
+                });
+               
+            }
+
             ViewEmp();
             //Add employe
             $("#employeAdd").click(function () {
@@ -111,6 +176,8 @@
                 let empp = {
                     name, age, depaertment, sallary
                 };
+                
+                
                 $.ajax({
                     type: "POST",
                     url: "Home/AddEmp",
