@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "dyKJVct9fipoUBbcgMgeTXZzRJNeMp7DogkkirDG4mBgcRA7+TSWBk7kpej2smt0IdlMotIVlCS50OlXUrQkTw==",
+  "dgSpecHash": "jo9j845HONpl6IHRH9SWykQwTWaW0JRHhrgkwDMlc6j/UhcJPBiRDkd8ZLHYqfcIQe1nPtsihyNfI3jiBJleow==",
   "success": true,
   "projectFilePath": "F:\\c#work\\Entity Framework with Ajax\\Entity Framework with Ajax.csproj",
   "expectedPackageFiles": [
@@ -61,6 +61,7 @@
     "C:\\Users\\Zeeshan Noor\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.35.0\\system.identitymodel.tokens.jwt.6.35.0.nupkg.sha512",
     "C:\\Users\\Zeeshan Noor\\.nuget\\packages\\system.io.filesystem.accesscontrol\\5.0.0\\system.io.filesystem.accesscontrol.5.0.0.nupkg.sha512",
     "C:\\Users\\Zeeshan Noor\\.nuget\\packages\\system.io.pipelines\\6.0.3\\system.io.pipelines.6.0.3.nupkg.sha512",
+    "C:\\Users\\Zeeshan Noor\\.nuget\\packages\\system.linq.dynamic\\1.0.8\\system.linq.dynamic.1.0.8.nupkg.sha512",
     "C:\\Users\\Zeeshan Noor\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\Zeeshan Noor\\.nuget\\packages\\system.memory.data\\1.0.2\\system.memory.data.1.0.2.nupkg.sha512",
     "C:\\Users\\Zeeshan Noor\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
@@ -81,5 +82,16 @@
     "C:\\Users\\Zeeshan Noor\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.4\\system.threading.tasks.extensions.4.5.4.nupkg.sha512",
     "C:\\Users\\Zeeshan Noor\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Linq.Dynamic 1.0.8' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "System.Linq.Dynamic",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

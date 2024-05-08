@@ -1161,6 +1161,15 @@
           "buildTransitive/netcoreapp3.1/_._": {}
         }
       },
+      "System.Linq.Dynamic/1.0.8": {
+        "type": "package",
+        "compile": {
+          "lib/net40/System.Linq.Dynamic.dll": {}
+        },
+        "runtime": {
+          "lib/net40/System.Linq.Dynamic.dll": {}
+        }
+      },
       "System.Memory/4.5.4": {
         "type": "package",
         "compile": {
@@ -3301,6 +3310,19 @@
         "useSharedDesignerContext.txt"
       ]
     },
+    "System.Linq.Dynamic/1.0.8": {
+      "sha512": "nh+3I/wcZcyQ4p8DKMhy/PH4sGKONrrGlx+eqpqrRTDHe6gyDTF5nK0AIXitDuzvtNTOkvpJWvPd0xdzEmlQjA==",
+      "type": "package",
+      "path": "system.linq.dynamic/1.0.8",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "NuGet.exe",
+        "lib/net40/System.Linq.Dynamic.dll",
+        "system.linq.dynamic.1.0.8.nupkg.sha512",
+        "system.linq.dynamic.nuspec"
+      ]
+    },
     "System.Memory/4.5.4": {
       "sha512": "1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
       "type": "package",
@@ -4102,7 +4124,8 @@
     "net8.0": [
       "Microsoft.EntityFrameworkCore >= 8.0.4",
       "Microsoft.EntityFrameworkCore.SqlServer >= 8.0.4",
-      "Microsoft.EntityFrameworkCore.Tools >= 8.0.4"
+      "Microsoft.EntityFrameworkCore.Tools >= 8.0.4",
+      "System.Linq.Dynamic >= 1.0.8"
     ]
   },
   "packageFolders": {
@@ -4162,6 +4185,10 @@
             "suppressParent": "All",
             "target": "Package",
             "version": "[8.0.4, )"
+          },
+          "System.Linq.Dynamic": {
+            "target": "Package",
+            "version": "[1.0.8, )"
           }
         },
         "imports": [
@@ -4186,5 +4213,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Linq.Dynamic 1.0.8' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "System.Linq.Dynamic",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }

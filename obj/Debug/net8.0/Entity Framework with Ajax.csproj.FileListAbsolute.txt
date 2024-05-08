@@ -135,3 +135,4 @@ F:\c#work\Entity Framework with Ajax\obj\Debug\net8.0\Entity Framework with Ajax
 F:\c#work\Entity Framework with Ajax\obj\Debug\net8.0\Entity Framework with Ajax.genruntimeconfig.cache
 F:\c#work\Entity Framework with Ajax\obj\Debug\net8.0\ref\Entity Framework with Ajax.dll
 F:\c#work\Entity Framework with Ajax\obj\Debug\net8.0\Entity Framework with Ajax.sourcelink.json
+F:\c#work\Entity Framework with Ajax\bin\Debug\net8.0\System.Linq.Dynamic.dll

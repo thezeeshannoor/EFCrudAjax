@@ -10,7 +10,8 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "8.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.4",
-          "Microsoft.EntityFrameworkCore.Tools": "8.0.4"
+          "Microsoft.EntityFrameworkCore.Tools": "8.0.4",
+          "System.Linq.Dynamic": "1.0.8"
         },
         "runtime": {
           "Entity Framework with Ajax.dll": {}
@@ -738,6 +739,14 @@
         }
       },
       "System.IO.Pipelines/6.0.3": {},
+      "System.Linq.Dynamic/1.0.8": {
+        "runtime": {
+          "lib/net40/System.Linq.Dynamic.dll": {
+            "assemblyVersion": "1.0.6132.35681",
+            "fileVersion": "1.0.6132.35681"
+          }
+        }
+      },
       "System.Memory/4.5.4": {},
       "System.Memory.Data/1.0.2": {
         "dependencies": {
@@ -1263,6 +1272,13 @@
       "sha512": "sha512-ryTgF+iFkpGZY1vRQhfCzX0xTdlV3pyaTTqRu2ETbEv+HlV7O6y7hyQURnghNIXvctl5DuZ//Dpks6HdL/Txgw==",
       "path": "system.io.pipelines/6.0.3",
       "hashPath": "system.io.pipelines.6.0.3.nupkg.sha512"
+    },
+    "System.Linq.Dynamic/1.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nh+3I/wcZcyQ4p8DKMhy/PH4sGKONrrGlx+eqpqrRTDHe6gyDTF5nK0AIXitDuzvtNTOkvpJWvPd0xdzEmlQjA==",
+      "path": "system.linq.dynamic/1.0.8",
+      "hashPath": "system.linq.dynamic.1.0.8.nupkg.sha512"
     },
     "System.Memory/4.5.4": {
       "type": "package",
