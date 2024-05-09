@@ -1,5 +1,6 @@
 using Entity_Framework_with_Ajax.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Dynamic;
 
@@ -22,52 +23,28 @@ namespace Entity_Framework_with_Ajax.Controllers
         [HttpPost]
         public JsonResult Indexx()
         {
-            int totalRecord = 0;
-            int filterRecord = 0;
+            var start = Convert.ToInt32(Request.Form["start"]);
+            var pageSize = Convert.ToInt32(Request.Form["length"]);
+            var pageNumber = start / pageSize + 1; ;
+            string searchKeyword = Request.Form["search[value]"];
 
-            var draw = Request.Form["draw"].FirstOrDefault();
-            var sortColumn = Request.Form["columns[" + Request.Form["order[0][column]"].FirstOrDefault() + "][name]"].FirstOrDefault();
-            var sortColumnDirection = Request.Form["order[0][dir]"].FirstOrDefault();
-            var searchValue = Request.Form["search[value]"].FirstOrDefault();
-            int pageSize = Convert.ToInt32(Request.Form["length"].FirstOrDefault() ?? "0");
-            int skip = Convert.ToInt32(Request.Form["start"].FirstOrDefault() ?? "0");
-            var data = emp.Set<Employe>().AsQueryable();
+            var employees = emp.Database.SqlQueryRaw<Employe>("EXEC GetEmployee @pageNumber, @pageSize,@searchKeyword",
+                new SqlParameter("PageNumber", pageNumber),
+                new SqlParameter("PageSize", pageSize),
+                 new SqlParameter("SearchKeyword", searchKeyword)
+            ).ToList();
 
-            // Get total count of data in table
-            totalRecord = data.Count();
+            var totalRecords = emp.Employes.Count();
 
-            // Search data when search value found
-            if (!string.IsNullOrEmpty(searchValue))
-            {
-                data = data.Where(x =>
-                    x.Name.ToLower().Contains(searchValue.ToLower())
-                    || x.Depaertment.ToLower().Contains(searchValue.ToLower())
-                    || x.Sallary.ToString().ToLower().Contains(searchValue.ToLower())
-                );
-            }
+            return Json(new
+            {  
+                draw = Convert.ToInt32(Request.Form["draw"]),
+                recordsTotal = totalRecords,
+                recordsFiltered = totalRecords,
+                data = employees
+            });
+        }
 
-            // Get total count of records after search
-            filterRecord = data.Count();
-
-            // Sort data
-            if (!string.IsNullOrEmpty(sortColumn) && !string.IsNullOrEmpty(sortColumnDirection))
-            {
-                if (sortColumnDirection == "asc")
-                {
-                    data = data.OrderBy(x => EF.Property<object>(x, sortColumn));
-                }
-                else
-                {
-                    data = data.OrderByDescending(x => EF.Property<object>(x, sortColumn));
-                }
-            }
-
-            // Pagination
-            var empList = data.Skip(skip).Take(pageSize).ToList();
-
-            var returnObj = new { draw = draw, recordsTotal = totalRecord, recordsFiltered = filterRecord, data = empList };
-            return Json(returnObj);
-            }
 
 
 

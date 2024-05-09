@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Entity Framework with Ajax")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+24de9e1d0de284527363b56e79634e5b5ef20446")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e430acbb6c698e6351f4efff0078cd9eaf3ce9d1")]
 [assembly: System.Reflection.AssemblyProductAttribute("Entity Framework with Ajax")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Entity Framework with Ajax")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
